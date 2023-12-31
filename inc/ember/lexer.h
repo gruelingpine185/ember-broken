@@ -21,6 +21,7 @@ namespace mbr {
             void advance();
             bool is_digit(int _c) const;
             bool is_whitespace(int _c) const;
+            void skip_whitespace();
         private:
             const std::string _data;
             size_t _offset;

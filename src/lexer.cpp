@@ -26,4 +26,12 @@ namespace mbr {
             (_c == '\v') || (_c == '\f') || (_c == ' ')
         );
     }
+
+    void lexer::skip_whitespace() {
+        do {
+            if(!this->is_whitespace(this->_data.at(this->_offset))) return;
+
+            this->advance();
+        } while(this->can_advance());
+    }
 }
