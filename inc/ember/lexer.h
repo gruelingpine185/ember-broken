@@ -17,6 +17,11 @@ namespace mbr {
             lexer(const std::string& _data);
             ~lexer();
         private:
+            bool can_advance() const;
+            void advance();
+            bool is_digit(int _c) const;
+            bool is_whitespace(int _c) const;
+        private:
             const std::string _data;
             size_t _offset;
             std::vector<token> _tokens;
