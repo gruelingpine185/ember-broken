@@ -27,8 +27,8 @@ namespace mbr {
             token collect_number();
         private:
             const std::string _data;
-            size_t _offset;
             std::vector<token> _tokens;
+            pos _pos;
     };
 }
 
