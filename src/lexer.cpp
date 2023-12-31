@@ -11,7 +11,7 @@ namespace mbr {
     lexer::~lexer() {}
 
     bool lexer::can_advance() const {
-        return (this->_pos.offset != this->_data.length()); 
+        return (this->_pos.offset < this->_data.length()); 
     }
 
     void lexer::advance() {
