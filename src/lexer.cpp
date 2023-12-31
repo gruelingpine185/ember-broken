@@ -52,7 +52,7 @@ namespace mbr {
             this->advance();
         } while(this->can_advance());
 
-        std::string_view lexeme(this->_data.c_str(),
+        std::string_view lexeme(this->_data.c_str() + start,
                                 (this->_pos.offset - start));
         token tok(token_type::tok_number, lexeme, val);
         return tok;
