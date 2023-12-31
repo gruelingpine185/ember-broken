@@ -11,4 +11,28 @@ namespace mbr {
         _type(token_type::tok_unknown), _lexeme(nullptr), _value{} {}
 
     token::~token() {}
+
+    token_type token::get_type() const {
+        return this->_type;
+    }
+
+    std::string_view token::get_lexeme() const {
+        return this->_lexeme;
+    }
+
+    token_value token::get_value() const {
+        return this->_value;
+    }
+
+    void token::set_type(const token_type _type) {
+        this->_type = _type;
+    }
+
+    void token::set_lexeme(const char* _lexeme, size_t _len) {
+        this->_lexeme = {_lexeme, _len}; 
+    }
+
+    void token::set_value(const token_value _value) {
+        this->_value = _value;
+    }
 }

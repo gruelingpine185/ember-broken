@@ -30,6 +30,13 @@ namespace mbr {
                 token_value _value);
         token();
         ~token();
+    public:
+        void set_type(const token_type _type);
+        void set_lexeme(const char* _lexeme, size_t _len);
+        void set_value(const token_value _value);
+        token_type get_type() const;
+        std::string_view get_lexeme() const;
+        token_value get_value() const;
     private:
         token_type _type;
         std::string_view _lexeme;
