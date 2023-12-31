@@ -15,6 +15,8 @@ namespace mbr {
         pos(uint32_t _ln, uint32_t _col, size_t _offset);
         pos();
         ~pos();
+        void inc_nl();
+        void inc_col();
     public:
         uint32_t ln;
         uint32_t col;
