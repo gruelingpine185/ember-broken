@@ -12,16 +12,6 @@ namespace mbr {
 
     token::~token() {}
 
-    token_type token::get_type() const {
-        return this->_type;
-    }
-
-    std::string_view token::get_lexeme() const {
-        return this->_lexeme;
-    }
-
-    token_value token::get_value() const {
-        return this->_value;
     void token::set_pos(const pos& _pos) {
         this->_pos = _pos;
     }
@@ -37,6 +27,19 @@ namespace mbr {
     void token::set_value(const token_value _value) {
         this->_value = _value;
     }
+
+    token_type token::get_type() const {
+        return this->_type;
+    }
+
+    std::string_view token::get_lexeme() const {
+        return this->_lexeme;
+    }
+
+    token_value token::get_value() const {
+        return this->_value;
+    }
+
     pos token::get_pos() const {
         return this->_pos;
     }
