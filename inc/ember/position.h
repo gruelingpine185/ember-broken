@@ -11,6 +11,11 @@ namespace mbr {
 
 
     struct pos {
+    public:
+        pos(uint32_t _ln, uint32_t _col, size_t _offset);
+        pos();
+        ~pos();
+    public:
         uint32_t ln;
         uint32_t col;
         size_t offset;
