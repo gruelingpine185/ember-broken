@@ -22,6 +22,8 @@ namespace mbr {
 
     token_value token::get_value() const {
         return this->_value;
+    void token::set_pos(const pos& _pos) {
+        this->_pos = _pos;
     }
 
     void token::set_type(const token_type _type) {
@@ -34,5 +36,8 @@ namespace mbr {
 
     void token::set_value(const token_value _value) {
         this->_value = _value;
+    }
+    pos token::get_pos() const {
+        return this->_pos;
     }
 }
