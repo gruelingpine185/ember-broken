@@ -29,7 +29,8 @@ namespace mbr {
     public:
         token(const token_type _type,
                 const std::string_view _lexeme,
-                token_value _value);
+                token_value _value,
+                const pos& _pos);
         token();
         ~token();
     public:
