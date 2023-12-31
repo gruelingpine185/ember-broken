@@ -54,4 +54,18 @@ namespace mbr {
         token tok(token_type::tok_number, lexeme, val);
         return tok;
     }
+
+    void lexer::lex() {
+        while(this->can_advance()) {
+            if(is_whitespace(this->_data[this->_offset])) {
+                this->skip_whitespace();
+            }
+
+            if(is_digit(this->_data[this->_offset])) {
+                this->_tokens.push_back(this->collect_number());
+            }
+
+            if(this->can_advance()) this->advance();
+        }
+    }
 }

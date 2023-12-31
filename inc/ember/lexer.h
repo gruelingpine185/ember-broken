@@ -16,6 +16,8 @@ namespace mbr {
         public:
             lexer(const std::string& _data);
             ~lexer();
+        public:
+            void lex();
         private:
             bool can_advance() const;
             void advance();
