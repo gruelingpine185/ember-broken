@@ -19,9 +19,9 @@ namespace mbr {
             lexer(const std::string& _data);
             ~lexer();
         public:
-            void lex();
-        private:
+            token lex();
             bool can_advance() const;
+        private:
             void advance();
             bool is_digit(int _c) const;
             bool is_upcase(int _c) const;

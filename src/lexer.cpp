@@ -74,17 +74,22 @@ namespace mbr {
         return tok;
     }
 
-    void lexer::lex() {
         while(this->can_advance()) {
-            if(is_whitespace(this->_data[this->_pos.offset])) {
-                this->skip_whitespace();
             }
-
-            if(is_digit(this->_data[this->_pos.offset])) {
-                this->_tokens.push_back(this->collect_number());
-            }
-
-            if(this->can_advance()) this->advance();
+    token lexer::lex() {
+        if(is_whitespace(this->_data[this->_pos.offset])) {
+            this->skip_whitespace();
         }
+
+        if(is_letter(this->_data[this->_pos.offset])) {
+            return this->collect_identifier();
+        }
+
+        if(is_digit(this->_data[this->_pos.offset])) {
+            return this->collect_number();
+        }
+
+        if(this->can_advance()) this->advance();
+        return {};
     }
 }
