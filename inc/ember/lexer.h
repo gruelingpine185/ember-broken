@@ -31,6 +31,7 @@ namespace mbr {
             bool is_whitespace(int _c) const;
             void skip_whitespace();
             token collect_number();
+            token collect_identifier();
         private:
             const std::string _data;
             std::vector<token> _tokens;
