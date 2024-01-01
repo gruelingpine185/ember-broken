@@ -70,4 +70,12 @@ namespace mbr {
     pos token::get_pos() const {
         return this->_pos;
     }
+    
+    token& token::operator=(const token& _tok) {
+        this->_type = _tok._type;
+        this->_lexeme = _tok._lexeme;
+        this->_value = _tok._value;
+        this->_pos = _tok._pos;
+        return *this;
+    }
 }

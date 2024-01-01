@@ -52,6 +52,7 @@ namespace mbr {
         std::string_view get_lexeme() const;
         token_value get_value() const;
         pos get_pos() const;
+        token& operator=(const token& _tok);
     private:
         token_type _type;
         std::string_view _lexeme;
