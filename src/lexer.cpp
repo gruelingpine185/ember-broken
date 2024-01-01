@@ -99,8 +99,6 @@ namespace mbr {
         return tok;
     }
 
-        while(this->can_advance()) {
-            }
     token lexer::lex() {
         if(is_whitespace(this->_data[this->_pos.offset])) {
             this->skip_whitespace();
