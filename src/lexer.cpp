@@ -24,6 +24,22 @@ namespace mbr {
         return ((_c >= '0') && (_c <= '9'));
     }
 
+    bool lexer::is_upcase(int _c) const {
+        return ((_c >= 'A') && (_c <= 'Z'));
+    }
+
+    bool lexer::is_locase(int _c) const {
+        return ((_c >= 'a') && (_c <= 'z'));
+    }
+
+    bool lexer::is_letter(int _c) const {
+        return (this->is_upcase(_c) || this->is_locase(_c));
+    }
+
+    bool lexer::is_identidier(int _c) const {
+        return ((_c == '_') || this->is_digit(_c) || this->is_letter(_c));
+    }
+
     bool lexer::is_whitespace(int _c) const {
         return (
             (_c == '\t') || (_c == '\r') || (_c == '\n') ||

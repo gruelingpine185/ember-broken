@@ -24,6 +24,10 @@ namespace mbr {
             bool can_advance() const;
             void advance();
             bool is_digit(int _c) const;
+            bool is_upcase(int _c) const;
+            bool is_locase(int _c) const;
+            bool is_letter(int _c) const;
+            bool is_identidier(int _c) const;
             bool is_whitespace(int _c) const;
             void skip_whitespace();
             token collect_number();
