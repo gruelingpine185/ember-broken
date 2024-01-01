@@ -11,7 +11,6 @@
 
 namespace mbr {
     enum class token_type;
-    union token_value;
     struct token_value;
     class token;
 
