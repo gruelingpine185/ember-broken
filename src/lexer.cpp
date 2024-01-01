@@ -56,10 +56,10 @@ namespace mbr {
     }
 
     token lexer::collect_number() {
-        const size_t start = this->_pos.offset;
+        const pos start_pos = this->_pos;
         token_value val;
+        val.type = token_type::tok_number;
         val.as_i32 = 0;
-
         do {
             const char curr = this->_data.at(this->_pos.offset);
             if(!this->is_digit(curr)) break;
@@ -68,9 +68,11 @@ namespace mbr {
             this->advance();
         } while(this->can_advance());
 
-        std::string_view lexeme(this->_data.c_str() + start,
-                                (this->_pos.offset - start));
-        token tok(token_type::tok_number, lexeme, val);
+        std::string_view lexeme(this->_data.c_str() + start_pos.offset,
+                                (this->_pos.offset - start_pos.offset));
+        token tok(lexeme, val, start_pos);
+        return tok;
+    }
         return tok;
     }
 
