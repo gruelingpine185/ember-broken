@@ -1,9 +1,12 @@
+#include <iostream>
+
 #include "token.h"
 
 
 namespace mbr {    
     token_value::token_value(const token_value& _value):
         type(_value.type) {
+        std::cout << "in token_value contructor" << std::endl;
         switch (this->type) {
             case token_type::tok_number:
                 this->as_i32 = _value.as_i32;
@@ -18,9 +21,11 @@ namespace mbr {
 
     token_value::token_value():
         type(token_type::tok_none) {
+        std::cout << "in token_value contructor (default)" << std::endl;
         }
 
     token_value::~token_value() {
+        std::cout << "in token_value destructor:" << std::endl;
         if(this->type == token_type::tok_identifier) {
             std::cout << "  deleting str" << std::endl;
 #if 0
