@@ -7,7 +7,10 @@
 
 
 int main(int _argc, char** _argv) {
-    if(_argc < 2) return 1;
+    if(_argc < 2) {
+        std::cout << "Expected filepath." << std::endl;
+        return 1;
+    }
 
     std::stringstream ss;
     std::fstream input(_argv[1], std::ios::in);
