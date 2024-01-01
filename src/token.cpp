@@ -35,7 +35,7 @@ namespace mbr {
         _lexeme(_lexeme), _value(_value), _pos(_pos) {}
 
     token::token():
-        _type(token_type::tok_unknown), _lexeme(nullptr), _value{}, _pos{} {}
+        _lexeme{}, _value{}, _pos{} {}
 
     token::~token() {}
 
