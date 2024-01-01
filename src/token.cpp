@@ -1,9 +1,34 @@
 #include "token.h"
 
 
-namespace mbr {
-    token::token(const token_type _type,
-                const std::string_view _lexeme,
+namespace mbr {    
+    token_value::token_value(const token_value& _value):
+        type(_value.type) {
+        switch (this->type) {
+            case token_type::tok_number:
+                this->as_i32 = _value.as_i32;
+                break;
+            case token_type::tok_identifier:
+                this->as_str = _value.as_str;
+                break;
+            default:
+                break;
+        }
+    }
+
+    token_value::token_value():
+        type(token_type::tok_none) {
+        }
+
+    token_value::~token_value() {
+        if(this->type == token_type::tok_identifier) {
+            std::cout << "  deleting str" << std::endl;
+#if 0
+            delete[] this->as_str;
+#endif
+        }
+    }
+
                 token_value _value,
                 const pos& _pos):
         _type(_type), _lexeme(_lexeme), _value(_value), _pos(_pos) {}

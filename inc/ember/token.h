@@ -12,17 +12,29 @@
 namespace mbr {
     enum class token_type;
     union token_value;
+    struct token_value;
     class token;
 
 
     enum class token_type {
+        tok_none,
         tok_unknown,
         tok_number,
+        tok_identifier,
         tok_eof
     };
 
-    union token_value {
-        int as_i32;
+    struct token_value {
+    public:
+        token_value(const token_value& _value);
+        token_value();
+        ~token_value();
+    public:
+        token_type type;
+        union {
+            int as_i32;
+            char* as_str;
+        };
     };
 
     class token {
