@@ -1,6 +1,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <vector>
 
 #include "token.h"
 #include "lexer.h"
@@ -12,12 +13,14 @@ int main(int _argc, char** _argv) {
         return 1;
     }
 
+    std::cout << "tok_number: " << mbr::token_type::tok_number << std::endl;
     std::stringstream ss;
     std::fstream input(_argv[1], std::ios::in);
     ss << input.rdbuf();
 
+    std::vector<mbr::token> tokens;
     mbr::lexer lexer(ss.str());
-    mbr::token tok;
+    size_t i = 0;
     while(lexer.can_advance()) {
         //tokens.push_back(lexer.lex());
         //mbr::token curr = tokens[i++];
