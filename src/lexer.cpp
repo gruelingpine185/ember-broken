@@ -57,7 +57,7 @@ namespace mbr {
         } while(this->can_advance());
     }
 
-    token* lexer::collect_number() {
+    token lexer::collect_number() {
         const pos start_pos = this->_pos;
         token_value val;
         val.type = token_type::tok_number;
@@ -73,11 +73,11 @@ namespace mbr {
 
         std::string_view lexeme(this->_data.c_str() + start_pos.offset,
                                 (this->_pos.offset - start_pos.offset));
-        token* tok = new token(lexeme, val, start_pos);
+        token tok = token(lexeme, val, start_pos);
         return tok;
     }
 
-    token* lexer::collect_identifier() {
+    token lexer::collect_identifier() {
         const pos start_pos = this->_pos;
 
         do {
@@ -95,11 +95,11 @@ namespace mbr {
         std::string_view lexeme(start_ptr, lexeme_len);
         val.as_str = new char[lexeme_len + 1];
         std::strncpy(val.as_str, start_ptr, lexeme_len);
-        token* tok = new token(lexeme, val, start_pos);
+        token tok = token(lexeme, val, start_pos);
         return tok;
     }
 
-    token* lexer::lex() {
+    token lexer::lex() {
         if(is_whitespace(this->_data[this->_pos.offset])) {
             this->skip_whitespace();
         }
@@ -115,7 +115,7 @@ namespace mbr {
         if(!this->can_advance()) {
             token_value val;
             val.type = token_type::tok_eof;
-            return new token({}, val, this->_pos);
+            return token({}, val, this->_pos);
         }
 
         this->advance();
