@@ -72,7 +72,7 @@ namespace mbr {
     }
 
     std::string token::type_to_str() const {
-        switch (this->_type) {
+        switch (this->_value.type) {
             case token_type::tok_eof:
                 return "eof";
             case token_type::tok_unknown:
@@ -90,7 +90,7 @@ namespace mbr {
     }
     
     token& token::operator=(const token& _tok) {
-        this->_type = _tok._type;
+        this->_value.type = _tok._value.type;
         this->_lexeme = _tok._lexeme;
         this->_value = _tok._value;
         this->_pos = _tok._pos;
