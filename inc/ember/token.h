@@ -4,6 +4,7 @@
 
 #include <cstddef>
 #include <string_view>
+#include <string>
 
 #include "position.h"
 
@@ -27,18 +28,19 @@ namespace mbr {
         token_value(const token_value& _value);
         token_value();
         ~token_value();
+        token_value& operator=(const token_value& _value);
     public:
         token_type type;
         union {
             int as_i32;
-            char* as_str;
+            std::string as_str;
         };
     };
 
     class token {
     public:
         token(const std::string_view _lexeme,
-                token_value _value,
+                const token_value _value,
                 const pos& _pos);
         token();
         ~token();
