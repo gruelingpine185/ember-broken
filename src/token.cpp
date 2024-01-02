@@ -12,6 +12,7 @@ namespace mbr {
 
     token_value::token_value(const token_value& _value):
         type(_value.type) {
+            std::cout << "\x1b[32mcreate\x1b[0m " << token_names[(int)this->type] << " " << &*this << std::endl;
         switch (this->type) {
             case token_type::tok_number:
                 this->as_i32 = _value.as_i32;
@@ -25,13 +26,16 @@ namespace mbr {
     }
 
     token_value::token_value():
-        type(token_type::tok_none) {}
+        type(token_type::tok_none) {
+            std::cout << "\x1b[32mcreate\x1b[0m " << token_names[(int)this->type] << " " << &*this << std::endl;
+        }
 
     token_value::~token_value() {
         if(this->type == token_type::tok_identifier) {
 #if 0
             delete[] this->as_str;
 #endif
+        std::cout << "\x1b[31mdelete\x1b[0m " << token_names[(int) this->type] << " " << &*this  << std::endl;
         }
     }
 
