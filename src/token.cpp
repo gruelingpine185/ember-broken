@@ -31,10 +31,6 @@ namespace mbr {
         }
 
     token_value::~token_value() {
-        if(this->type == token_type::tok_identifier) {
-#if 0
-            delete[] this->as_str;
-#endif
         std::cout << "\x1b[31mdelete\x1b[0m " << token_names[(int) this->type] << " " << &*this  << std::endl;
     }
     
