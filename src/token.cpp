@@ -32,7 +32,7 @@ namespace mbr {
     token::token(const std::string_view _lexeme,
                 token_value _value,
                 const pos& _pos):
-        _lexeme(_lexeme), _value(_value), _pos(_pos) {}
+       _lexeme(_lexeme), _value(_value), _pos(_pos) {}
 
     token::token():
         _lexeme{}, _value{}, _pos{} {}
@@ -44,7 +44,7 @@ namespace mbr {
     }
 
     void token::set_type(int _type) {
-        this->_type = _type;
+        this->_value.type = _type;
     }
 
     void token::set_lexeme(const char* _lexeme, size_t _len) {
@@ -56,7 +56,7 @@ namespace mbr {
     }
 
     int token::get_type() const {
-        return this->_type;
+        return this->_value.type;
     }
 
     std::string_view token::get_lexeme() const {
