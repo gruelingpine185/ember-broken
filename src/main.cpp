@@ -13,36 +13,33 @@ int main(int _argc, char** _argv) {
         return 1;
     }
 
-    std::cout << "tok_number: " << mbr::token_type::tok_number << std::endl;
     std::stringstream ss;
     std::fstream input(_argv[1], std::ios::in);
     ss << input.rdbuf();
 
     mbr::lexer lexer(ss.str());
-    size_t i = 0;
     while(lexer.can_advance()) {
-        mbr::token* curr = lexer.lex();
+        mbr::token curr = lexer.lex();
 #if 1
         std::cout
-            << "type: " << static_cast<int>(curr->get_type()) << std::endl
-            << "typeof: " << curr->type_to_str() << std::endl
-            << "lexeme: \'" << curr->get_lexeme() << "\'"
+            << "type: " << static_cast<int>(curr.get_type()) << std::endl
+            << "typeof: " << curr.type_to_str() << std::endl
+            << "lexeme: \'" << curr.get_lexeme() << "\'"
             <<
         std::endl;
-        switch(curr->get_type()) {
+        switch(curr.get_type()) {
             case mbr::token_type::tok_identifier:
-                std::cout << "value: \'" << curr->get_value().as_str << "\'"
+                std::cout << "value: \'" << curr.get_value().as_str << "\'"
                     << std::endl;
                 break;
             case mbr::token_type::tok_number:
-                std::cout << "value: " << curr->get_value().as_i32
+                std::cout << "value: " << curr.get_value().as_i32
                     << std::endl;
                 break;
             default:
                 std::cout << "value: <default>" << std::endl; 
                 break;
         }
-        delete curr;
 #endif
     }
 
