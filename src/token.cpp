@@ -59,8 +59,7 @@ namespace mbr {
                 const pos& _pos):
        _lexeme(_lexeme), _value(_value), _pos(_pos) {}
 
-    token::token():
-        _lexeme{}, _value{}, _pos{} {}
+    token::token() {}
 
     token::~token() {}
 
