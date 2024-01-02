@@ -25,9 +25,7 @@ int main(int _argc, char** _argv) {
         std::cout
             << "type: " << static_cast<int>(curr.get_type()) << std::endl
             << "typeof: " << curr.type_to_str() << std::endl
-            << "lexeme: \'" << curr.get_lexeme() << "\'"
-            <<
-        std::endl;
+            << "lexeme: \'" << curr.get_lexeme() << "\'" << std::endl;
         switch(curr.get_type()) {
             case mbr::token_type::tok_identifier:
                 std::cout << "value: \'" << curr.get_value().as_str << "\'"
@@ -41,6 +39,7 @@ int main(int _argc, char** _argv) {
                 std::cout << "value: <default>" << std::endl; 
                 break;
         }
+        std::cout << std::endl;
 #endif
     }
 
