@@ -43,7 +43,7 @@ namespace mbr {
         this->_pos = _pos;
     }
 
-    void token::set_type(int _type) {
+    void token::set_type(token_type _type) {
         this->_value.type = _type;
     }
 
@@ -55,7 +55,7 @@ namespace mbr {
         this->_value = _value;
     }
 
-    int token::get_type() const {
+    token_type token::get_type() const {
         return this->_value.type;
     }
 
