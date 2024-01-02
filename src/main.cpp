@@ -19,24 +19,30 @@ int main(int _argc, char** _argv) {
     mbr::lexer lexer(ss.str());
     mbr::token tok;
     while(lexer.can_advance()) {
-        tok = lexer.lex();
+        //tokens.push_back(lexer.lex());
+        //mbr::token curr = tokens[i++];
+        mbr::token* curr = lexer.lex();
 #if 1
         std::cout
-            << "type: " << static_cast<int>(tok.get_type()) << std::endl
-            << "lexeme: \'" << tok.get_lexeme() << "\'" <<
-            std::endl;
-        switch(tok.get_type()) {
+            << "type: " << static_cast<int>(curr->get_type()) << std::endl
+            << "typeof: " << curr->type_to_str() << std::endl
+            << "lexeme: \'" << curr->get_lexeme() << "\'"
+            <<
+        std::endl;
+        switch(curr->get_type()) {
             case mbr::token_type::tok_identifier:
-                std::cout << "value: \'" << tok.get_value().as_str << "\'"
+                std::cout << "value: \'" << curr->get_value().as_str << "\'"
                     << std::endl;
                 break;
             case mbr::token_type::tok_number:
-                std::cout << "value: " << tok.get_value().as_i32
+                std::cout << "value: " << curr->get_value().as_i32
                     << std::endl;
                 break;
             default:
+                std::cout << "value: <default>" << std::endl; 
                 break;
         }
+        delete curr;
 #endif
     }
 

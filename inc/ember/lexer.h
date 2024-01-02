@@ -19,7 +19,7 @@ namespace mbr {
             lexer(const std::string& _data);
             ~lexer();
         public:
-            token lex();
+            token* lex();
             bool can_advance() const;
         private:
             void advance();
@@ -30,11 +30,10 @@ namespace mbr {
             bool is_identidier(int _c) const;
             bool is_whitespace(int _c) const;
             void skip_whitespace();
-            token collect_number();
-            token collect_identifier();
+            token* collect_number();
+            token* collect_identifier();
         private:
             const std::string _data;
-            std::vector<token> _tokens;
             pos _pos;
     };
 }

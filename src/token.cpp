@@ -6,7 +6,6 @@
 namespace mbr {    
     token_value::token_value(const token_value& _value):
         type(_value.type) {
-        std::cout << "in token_value contructor" << std::endl;
         switch (this->type) {
             case token_type::tok_number:
                 this->as_i32 = _value.as_i32;
@@ -20,14 +19,10 @@ namespace mbr {
     }
 
     token_value::token_value():
-        type(token_type::tok_none) {
-        std::cout << "in token_value contructor (default)" << std::endl;
-        }
+        type(token_type::tok_none) {}
 
     token_value::~token_value() {
-        std::cout << "in token_value destructor:" << std::endl;
         if(this->type == token_type::tok_identifier) {
-            std::cout << "  deleting str" << std::endl;
 #if 0
             delete[] this->as_str;
 #endif
@@ -48,7 +43,7 @@ namespace mbr {
         this->_pos = _pos;
     }
 
-    void token::set_type(const token_type _type) {
+    void token::set_type(int _type) {
         this->_type = _type;
     }
 
@@ -60,7 +55,7 @@ namespace mbr {
         this->_value = _value;
     }
 
-    token_type token::get_type() const {
+    int token::get_type() const {
         return this->_type;
     }
 
@@ -74,6 +69,24 @@ namespace mbr {
 
     pos token::get_pos() const {
         return this->_pos;
+    }
+
+    std::string token::type_to_str() const {
+        switch (this->_type) {
+            case token_type::tok_eof:
+                return "eof";
+            case token_type::tok_unknown:
+                return "unknown";
+            case token_type::tok_number:
+                return "number";
+            case token_type::tok_identifier:
+                return "identifier";
+            case token_type::tok_none:
+            default:
+                break;
+        }
+
+        return "none";
     }
     
     token& token::operator=(const token& _tok) {
