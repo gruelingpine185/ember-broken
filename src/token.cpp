@@ -36,7 +36,22 @@ namespace mbr {
             delete[] this->as_str;
 #endif
         std::cout << "\x1b[31mdelete\x1b[0m " << token_names[(int) this->type] << " " << &*this  << std::endl;
+    }
+    
+    token_value& token_value::operator=(const token_value& _value) {
+        this->type = _value.type;
+        switch (this->type) {
+            case token_type::tok_number:
+                this->as_i32 = _value.as_i32;
+                break;
+            case token_type::tok_identifier:
+                this->as_str = _value.as_str;
+                break;
+            default:
+                break;
         }
+   
+        return *this;
     }
 
     token::token(const std::string_view _lexeme,
