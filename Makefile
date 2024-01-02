@@ -18,7 +18,7 @@ lib_ext =
 lib_full = $(bin_dir)/lib$(lib_name).$(lib_ext)
 
 # compiler flags
-cpp_std = -std=c++11
+cpp_std = -std=c++17
 cpp_opt = -O2
 cpp_wrn = -Wall -Wextra -pedantic
 cpp_def =
