@@ -55,7 +55,7 @@ namespace mbr {
     }
 
     token::token(const std::string_view _lexeme,
-                token_value _value,
+                const token_value _value,
                 const pos& _pos):
        _lexeme(_lexeme), _value(_value), _pos(_pos) {}
 
