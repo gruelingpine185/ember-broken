@@ -3,7 +3,13 @@
 #include "token.h"
 
 
-namespace mbr {    
+namespace mbr {
+    static const std::string token_names[] = {
+        "none", "eof", "unknown",
+        "number", "identifier"
+    };
+
+
     token_value::token_value(const token_value& _value):
         type(_value.type) {
         switch (this->type) {
@@ -72,21 +78,10 @@ namespace mbr {
     }
 
     std::string token::type_to_str() const {
-        switch (this->_value.type) {
-            case token_type::tok_eof:
-                return "eof";
-            case token_type::tok_unknown:
-                return "unknown";
-            case token_type::tok_number:
-                return "number";
-            case token_type::tok_identifier:
-                return "identifier";
-            case token_type::tok_none:
-            default:
-                break;
-        }
-
-        return "none";
+        const int type = static_cast<int>(this->_value.type);
+        return (((this->_value.type > token_type::tok_none) &&
+                (this->_value.type <= token_type::tok_identifier)))?
+            token_names[type]: token_names[0];
     }
     
     token& token::operator=(const token& _tok) {
