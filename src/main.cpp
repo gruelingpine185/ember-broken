@@ -18,8 +18,9 @@ int main(int _argc, char** _argv) {
     ss << input.rdbuf();
 
     mbr::lexer lexer(ss.str());
+    mbr::token curr;
     while(lexer.can_advance()) {
-        mbr::token curr = lexer.lex();
+        curr = lexer.lex();
 #if 1
         std::cout
             << "type: " << static_cast<int>(curr.get_type()) << std::endl
