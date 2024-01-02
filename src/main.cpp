@@ -18,12 +18,9 @@ int main(int _argc, char** _argv) {
     std::fstream input(_argv[1], std::ios::in);
     ss << input.rdbuf();
 
-    std::vector<mbr::token> tokens;
     mbr::lexer lexer(ss.str());
     size_t i = 0;
     while(lexer.can_advance()) {
-        //tokens.push_back(lexer.lex());
-        //mbr::token curr = tokens[i++];
         mbr::token* curr = lexer.lex();
 #if 1
         std::cout
