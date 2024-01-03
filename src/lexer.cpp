@@ -93,7 +93,7 @@ namespace mbr {
         const char* start_ptr = this->_data.c_str() + start_pos.offset;
         const size_t lexeme_len = (this->_pos.offset - start_pos.offset);
         std::string_view lexeme(start_ptr, lexeme_len);
-        val.as_str = {start_ptr, lexeme_len};
+        val.as_str = this->_data.substr(start_pos.offset, lexeme_len);
         token tok = token(lexeme, val, start_pos);
         return tok;
     }
