@@ -28,11 +28,11 @@ int main(int _argc, char** _argv) {
             << "lexeme: \'" << curr.get_lexeme() << "\'" << std::endl;
         switch(curr.get_type()) {
             case mbr::token_type::tok_identifier:
-                std::cout << "value: \'" << curr.get_value().as_str << "\'"
+                std::cout << "value: \'" << curr.get_value().as.str << "\'"
                     << std::endl;
                 break;
             case mbr::token_type::tok_number:
-                std::cout << "value: " << curr.get_value().as_i32
+                std::cout << "value: " << curr.get_value().as.i32
                     << std::endl;
                 break;
             default:

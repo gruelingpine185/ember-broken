@@ -10,17 +10,23 @@ namespace mbr {
     };
 
 
+    token_as_type::token_as_type():
+        str("") {}
+
+    token_as_type::~token_as_type() {}
+
     token_value::token_value(const token_value& _value):
         type(_value.type) {
             std::cout << "\x1b[32mcreate\x1b[0m " << token_names[(int)this->type] << " " << &*this << std::endl;
         switch (this->type) {
             case token_type::tok_number:
-                this->as_i32 = _value.as_i32;
+                this->as.i32 = _value.as.i32;
                 break;
             case token_type::tok_identifier:
-                this->as_str = _value.as_str;
+                this->as.str = _value.as.str;
                 break;
             default:
+                this->as.i32 = _value.as.i32;
                 break;
         }
     }
@@ -28,6 +34,7 @@ namespace mbr {
     token_value::token_value():
         type(token_type::tok_none) {
             std::cout << "\x1b[32mcreate\x1b[0m " << token_names[(int)this->type] << " " << &*this << std::endl;
+            this->as.i32 = 0;
         }
 
     token_value::~token_value() {
@@ -38,10 +45,10 @@ namespace mbr {
         this->type = _value.type;
         switch (this->type) {
             case token_type::tok_number:
-                this->as_i32 = _value.as_i32;
+                this->as.i32 = _value.as.i32;
                 break;
             case token_type::tok_identifier:
-                this->as_str = _value.as_str;
+                this->as.str = _value.as.str;
                 break;
             default:
                 break;

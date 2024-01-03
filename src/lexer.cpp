@@ -61,19 +61,19 @@ namespace mbr {
         const pos start_pos = this->_pos;
         token_value val;
         val.type = token_type::tok_number;
-        val.as_i32 = 0;
+        val.as.i32 = 0;
 
         do {
             const char curr = this->_data.at(this->_pos.offset);
             if(!this->is_digit(curr)) break;
 
-            val.as_i32 = (val.as_i32 * 10) + (curr - '0');
+            val.as.i32 = (val.as.i32 * 10) + (curr - '0');
             this->advance();
         } while(this->can_advance());
 
         std::string_view lexeme(this->_data.c_str() + start_pos.offset,
                                 (this->_pos.offset - start_pos.offset));
-        token tok = token(lexeme, val, start_pos);
+        token tok(lexeme, val, start_pos);
         return tok;
     }
 
@@ -81,7 +81,7 @@ namespace mbr {
         const pos start_pos = this->_pos;
 
         do {
-            const char curr = this->_data.at(this->_pos.offset);
+            const char curr = this->_data[this->_pos.offset];
             if(!this->is_identifier(curr)) break;
 
             this->advance();
@@ -93,7 +93,7 @@ namespace mbr {
         const char* start_ptr = this->_data.c_str() + start_pos.offset;
         const size_t lexeme_len = (this->_pos.offset - start_pos.offset);
         std::string_view lexeme(start_ptr, lexeme_len);
-        val.as_str = this->_data.substr(start_pos.offset, lexeme_len);
+        val.as.str = this->_data.substr(start_pos.offset, lexeme_len);
         token tok = token(lexeme, val, start_pos);
         return tok;
     }

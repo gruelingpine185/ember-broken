@@ -13,6 +13,7 @@ namespace mbr {
     enum class token_type;
     struct token_value;
     class token;
+    union token_as_type;
 
 
     enum class token_type {
@@ -23,6 +24,15 @@ namespace mbr {
         tok_identifier
     };
 
+    union token_as_type {
+    public:
+        token_as_type();
+        ~token_as_type();
+    public:
+        int i32;
+        std::string str;
+    };
+
     struct token_value {
     public:
         token_value(const token_value& _value);
@@ -31,10 +41,7 @@ namespace mbr {
         token_value& operator=(const token_value& _value);
     public:
         token_type type;
-        union {
-            int as_i32;
-            std::string as_str;
-        };
+        token_as_type as;
     };
 
     class token {
