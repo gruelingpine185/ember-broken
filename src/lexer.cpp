@@ -38,7 +38,7 @@ namespace mbr {
         return (this->is_upcase(_c) || this->is_locase(_c));
     }
 
-    bool lexer::is_identidier(int _c) const {
+    bool lexer::is_identifier(int _c) const {
         return ((_c == '_') || this->is_digit(_c) || this->is_letter(_c));
     }
 
@@ -82,7 +82,7 @@ namespace mbr {
 
         do {
             const char curr = this->_data.at(this->_pos.offset);
-            if(!this->is_identidier(curr)) break;
+            if(!this->is_identifier(curr)) break;
 
             this->advance();
         } while(this->can_advance());
